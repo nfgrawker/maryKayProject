@@ -151,7 +151,7 @@ body {
   -o-border-radius: 10px;
   -ms-border-radius: 10px; }
 
-.appointment-form {
+.registration-form {
   padding: 50px 60px 70px 60px; }
 
 input, select {
@@ -314,7 +314,7 @@ li.init {
     width: calc( 100% - 30px);
     max-width: 100%; } }
 @media screen and (max-width: 480px) {
-  .appointment-form {
+  .registration-form {
     padding: 50px 30px 70px 30px; } }
 
 /*# sourceMappingURL=register.csscss.map */

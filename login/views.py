@@ -6,11 +6,12 @@ def homeLogin(request):
     context={
     }
     print(request)
-    return render(request, "login/testLogin.html", context)
+    return render(request, "login/homeLogin.html", context)
 
 def forgotPassword(request):
     return HttpResponse("ForgotPasswordPage")
-
+def termsAndConditions(request):
+    return HttpResponse("COMING SOON!")
 def registerAccount(request):
     context={
     }
