@@ -1,0 +1,28 @@
+{% extends 'login/base.html' %}
+{% block content %}
+
+    <div class="main">
+
+        <div class="container">
+            <form method="POST" class="registration-form" id="registration-form">
+                <h2>Registration Form</h2>
+                <div class="form-group-1">
+                    <input type="text" name="Consultant Number" id="consultantNumber" placeholder="Consultant Number" required />
+                    <input type="text" name="name" id="name" placeholder="Your Name" required />
+                    <input type="email" name="email" id="email" placeholder="Email" required />
+                    <input type="number" name="phone_number" id="phone_number" placeholder="Phone number" required />
+                </div>
+                <div class=" form-check">
+                    <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
+                    <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree to the  <a href="/terms" class="term-service">Terms and Conditions</a></label>
+                </div>
+                <div class="form-submit">
+                    <input type="submit" name="submit" id="submit" class="submit" value="Create an Account" />
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <!-- This templates was made by Colorlib (https://colorlib.com) -->
+{% endblock content %}
+
