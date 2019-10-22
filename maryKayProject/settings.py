@@ -11,6 +11,16 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import environ
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
+# reading .env file
+environ.Env.read_env()
+
+# False if not in os.environ
+DEBUG = env('DEBUG')
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,7 +30,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 't@gm_i4lx1-8y(4-t=$=(az0!bkgozvulh)7ew#$(3k6ft675w'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -80,6 +90,11 @@ DATABASES = {
     'default': {
         'ENGINE': 'djongo',
         'NAME': 'maryKayApp',
+        'HOST': env('HOST'),
+        'PASSWORD': env('PASSWORD'),
+        'USER': env('USER'),
+        'AUTH_MECHANISM': env('AUTH_MECHANISM'),
+        'AUTH_SOURCE': 'admin',
     }
 }
 
