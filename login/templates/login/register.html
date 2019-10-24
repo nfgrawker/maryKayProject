@@ -5,6 +5,7 @@
 
         <div class="container">
             <form method="POST" class="registration-form" id="registration-form">
+                {% csrf_token %}
                 <h2>Registration Form</h2>
                 <div class="form-group-1">
                     <input type="text" name="Consultant Number" id="consultantNumber" placeholder="Consultant Number" required />

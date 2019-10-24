@@ -13,6 +13,8 @@ def forgotPassword(request):
 def termsAndConditions(request):
     return HttpResponse("COMING SOON!")
 def registerAccount(request):
+    if request.method == "POST":
+        print(request.post)
     context={
     }
     print(request)
