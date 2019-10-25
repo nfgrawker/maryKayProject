@@ -9,8 +9,8 @@
     });
 })(jQuery);
 
-document.onload = function() {
-    $("#submit").onClick(function () {
+window.onload = function() {
+    $("#submit").click(function () {
         let pass1 = $('#password1').val()
         let pass2 = $('#password2').val()
         if (pass1 === pass2) {
