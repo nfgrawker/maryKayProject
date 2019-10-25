@@ -3,7 +3,7 @@ from django.http import HttpResponse
 # Create your views here.
 
 def homeLogin(request):
-    context={
+    context = {
     }
     print(request)
     return render(request, "login/homeLogin.html", context)
@@ -14,7 +14,7 @@ def termsAndConditions(request):
     return HttpResponse("COMING SOON!")
 def registerAccount(request):
     if request.method == "POST":
-        print(request.post)
+        print(request.POST)
     context={
     }
     print(request)
