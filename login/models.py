@@ -1,6 +1,10 @@
 from djongo import models
+from django.contrib.auth.models import AbstractUser
+from phonenumber_field.modelfields import PhoneNumberField
 
 # Create your models here.
-class Register(models.Model):
-    firstName = models.CharField(max_length=80)
-    lastName = models.CharField(max_length=100)
+class User(AbstractUser):
+    phone_number = models.CharField(max_length=15)
+    consultant_number = models.IntegerField(default=0000)
+    class Meta:
+        proxy = True

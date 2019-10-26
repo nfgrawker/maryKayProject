@@ -1,5 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from .forms import UserRegisterForm
+from django.contrib import messages
 # Create your views here.
 
 def homeLogin(request):
@@ -15,7 +17,18 @@ def termsAndConditions(request):
 def registerAccount(request):
     if request.method == "POST":
         print(request.POST)
-    context={
-    }
-    print(request)
-    return render(request, "login/register.html", context)
+        form = UserRegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            print("saved")
+            print(form.cleaned_data)
+            firstName = form.cleaned_data.get('first_name')
+            lastName = form.cleaned_data.get('last_name')
+            messages.success(request, f'Account created for {firstName} {lastName}!')
+            return redirect("inventoryHome")
+        else:
+            print(form.errors)
+    else:
+        form = UserRegisterForm()
+
+    return render(request, "login/register.html", {"form":form})

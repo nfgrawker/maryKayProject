@@ -47,8 +47,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'phonenumber_field',
     'maryKay.apps.MarykayConfig',
     "login.apps.LoginConfig",
+    "inventory.apps.InventoryConfig",
 
 ]
 
@@ -118,6 +120,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'login.Register'
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
