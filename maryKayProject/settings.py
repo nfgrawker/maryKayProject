@@ -47,7 +47,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'phonenumber_field',
     'maryKay.apps.MarykayConfig',
     "login.apps.LoginConfig",
     "inventory.apps.InventoryConfig",
@@ -98,6 +97,8 @@ DATABASES = {
         'USER': env('USER'),
         'AUTH_MECHANISM': env('AUTH_MECHANISM'),
         'AUTH_SOURCE': 'admin',
+        'ENFORCE_SCHEMA': False,
+
     }
 }
 
@@ -120,7 +121,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTH_USER_MODEL = 'login.Register'
+AUTH_USER_MODEL = 'login.User'
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
