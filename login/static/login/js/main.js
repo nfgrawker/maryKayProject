@@ -13,13 +13,15 @@ window.onload = function() {
     $("#submit").click(function () {
         let pass1 = $('#password1').val()
         let pass2 = $('#password2').val()
+        console.log(pass1)
+        console.log(pass2)
         if (pass1 === pass2) {
 
         } else {
             event.preventDefault()
         }
     });
-    var myInput = document.getElementById("psw");
+    var myInput = document.getElementById("password1");
     var letter = document.getElementById("letter");
     var capital = document.getElementById("capital");
     var number = document.getElementById("number");
