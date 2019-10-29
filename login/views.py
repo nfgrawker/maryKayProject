@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .forms import UserRegisterForm
 from django.contrib import messages
+
+
 # Create your views here.
 
 def homeLogin(request):
@@ -10,10 +12,15 @@ def homeLogin(request):
     print(request)
     return render(request, "login/homeLogin.html", context)
 
+
 def forgotPassword(request):
     return HttpResponse("ForgotPasswordPage")
+
+
 def termsAndConditions(request):
     return HttpResponse("COMING SOON!")
+
+
 def registerAccount(request):
     if request.method == "POST":
         print(request.POST)
@@ -31,4 +38,4 @@ def registerAccount(request):
     else:
         form = UserRegisterForm()
 
-    return render(request, "login/register.html", {"form":form})
+    return render(request, "login/register.html", {"form": form})
