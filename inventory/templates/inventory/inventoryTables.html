@@ -1,33 +1,35 @@
 {% extends 'login/base.html' %}
 {% block content %}
     <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Quantity</th>
-      <th scope="col">Product Name</th>
-      <th scope="col">Price</th>
-      <th scope="col">Optional Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
+        <thead>
+        <tr>
+            <th scope="col">Quantity</th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Optional Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% with index=0 %}
+        {% for product in inventory %}
+        <tr>
+            <th><button class="button" id="changeProduct{{ index }}">Change Inventory</button></th>
+            <td >{{ product.product_name }}</tdid>
+            <td>{{ product.price }}</td>
+            <td>{{ product.quantity }}</td>
+            <td>{{ product.product_description }}</td>
+        </tr>
+            {{ index|add:"1" }}
+
+        {% endfor %}
+        {% endwith %}
+        <tr>
+            <th><button class="button" id="postProduct">Add to Inventory</button></th>
+            <td><input type="text" id="name" placeholder="product name"></td>
+            <td><input type="text" id="price" placeholder="product price"></td>
+            <td><input type="text" id="quantity" placeholder="product quantity"></td>
+            <td><input type="text" id="description" placeholder="product description"></td>
+        </tr>
+        </tbody>
+    </table>
 {% endblock content %}

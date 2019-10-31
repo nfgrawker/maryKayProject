@@ -5,11 +5,10 @@ from .models import User
 
 
 class UserRegisterForm(UserCreationForm):
-    username = forms.CharField(required=False)
+    username = forms.CharField()
     email = forms.EmailField()
     phone_number = forms.CharField(required=False)
-    consultant_number = forms.IntegerField()
 
     class Meta:
         model = User
-        fields = ['username', 'first_name', 'last_name','consultant_number', 'phone_number', 'email', 'password1', 'password2']
+        fields = ['username', 'first_name', 'last_name', 'phone_number', 'email', 'password1', 'password2']
