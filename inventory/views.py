@@ -8,3 +8,7 @@ def inventoryHome(request):
         'products': Products.objects.all()
     }
     return HttpResponse("COMING SOON!")
+
+def createProductsTest(request):
+    print(request.POST)
+    return HttpResponse("Success")

@@ -23,7 +23,6 @@ def termsAndConditions(request):
 
 def registerAccount(request):
     if request.method == "POST":
-        print(request.POST)
         form = UserRegisterForm(request.POST)
         if form.is_valid():
             form.save()
