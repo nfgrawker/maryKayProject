@@ -144,3 +144,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+ALLOWED_HOSTS = ['192.168.86.39', 'localhost', '127.0.0.1']
+
+LOGIN_REDIRECT_URL = '/inventoryHome'
+LOGIN_URL = 'login'

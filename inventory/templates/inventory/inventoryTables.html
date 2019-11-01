@@ -1,35 +1,45 @@
-{% extends 'login/base.html' %}
+{% extends 'inventory/inventoryBase.html' %}
 {% block content %}
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">Quantity</th>
-            <th scope="col">Product Name</th>
-            <th scope="col">Price</th>
-            <th scope="col">Optional Description</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% with index=0 %}
-        {% for product in inventory %}
-        <tr>
-            <th><button class="button" id="changeProduct{{ index }}">Change Inventory</button></th>
-            <td >{{ product.product_name }}</tdid>
-            <td>{{ product.price }}</td>
-            <td>{{ product.quantity }}</td>
-            <td>{{ product.product_description }}</td>
-        </tr>
-            {{ index|add:"1" }}
-
-        {% endfor %}
-        {% endwith %}
-        <tr>
-            <th><button class="button" id="postProduct">Add to Inventory</button></th>
-            <td><input type="text" id="name" placeholder="product name"></td>
-            <td><input type="text" id="price" placeholder="product price"></td>
-            <td><input type="text" id="quantity" placeholder="product quantity"></td>
-            <td><input type="text" id="description" placeholder="product description"></td>
-        </tr>
-        </tbody>
-    </table>
+    <div class="row">
+        <div class="container">
+            <div class="col-sm-12">
+            <h1>Product Inventory</h1>
+                <table class="table-striped display">
+                    <thead>
+                    <tr>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Optional Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% with index=0 %}
+                        {% for product in products %}
+                            <tr>
+                                <td>{{ product.quantity }}</td>
+                                <td>{{ product.product_name }}</td>
+                                <td>{{ product.price }}</td>
+                                <td>{{ product.product_description }}</td>
+                                <th>
+                                    <button class="button" id="changeProduct">Change Inventory</button>
+                                </th>
+                            </tr>
+                        {% endfor %}
+                    {% endwith %}
+                    <tr>
+                        {% csrf_token %}
+                        <td><input type="text" id="quantity" placeholder="product quantity"></td>
+                        <td><input type="text" id="name" placeholder="product name"></td>
+                        <td><input type="text" id="price" placeholder="product price"></td>
+                        <td><input type="text" id="description" placeholder="product description"></td>
+                        <th>
+                            <button class="button" id="postProduct">Add to Inventory</button>
+                        </th>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 {% endblock content %}

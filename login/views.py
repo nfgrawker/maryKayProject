@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .forms import UserRegisterForm
 from django.contrib import messages
+from django.contrib.auth import logout
 
 
 # Create your views here.
@@ -15,7 +16,10 @@ def homeLogin(request):
 
 def forgotPassword(request):
     return HttpResponse("ForgotPasswordPage")
-
+def logout_view(request):
+    logout(request)
+    messages.success(request, 'You have been logged out')
+    return redirect("/login")
 
 def termsAndConditions(request):
     return HttpResponse("COMING SOON!")
@@ -32,7 +36,7 @@ def registerAccount(request):
             firstName = form.cleaned_data.get('first_name')
             lastName = form.cleaned_data.get('last_name')
             messages.success(request, f'Account created for {firstName} {lastName}!')
-            return redirect("inventoryHome")
+            return redirect("/login")
         else:
             print(form.errors)
     else:
