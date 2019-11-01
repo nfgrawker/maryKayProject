@@ -41,7 +41,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    "login.apps.LoginConfig",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -49,6 +48,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'maryKay.apps.MarykayConfig',
+    'login.apps.LoginConfig',
+    'inventory.apps.InventoryConfig',
+    'crispy_forms',
+
 ]
 
 MIDDLEWARE = [
@@ -95,6 +98,8 @@ DATABASES = {
         'USER': env('USER'),
         'AUTH_MECHANISM': env('AUTH_MECHANISM'),
         'AUTH_SOURCE': 'admin',
+        'ENFORCE_SCHEMA': False,
+
     }
 }
 
@@ -117,6 +122,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'login.User'
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
@@ -136,3 +142,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+ALLOWED_HOSTS = ['192.168.86.39', 'localhost', '127.0.0.1']
+
+LOGIN_REDIRECT_URL = '/inventoryHome'
+LOGIN_URL = 'login'

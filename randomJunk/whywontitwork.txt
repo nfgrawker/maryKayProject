@@ -9,8 +9,17 @@
     });
 })(jQuery);
 
-window.onload = function() {
-    var myInput = document.getElementById("password1");
+document.onload = function() {
+    $("#submit").onClick(function () {
+        let pass1 = $('#password1').val()
+        let pass2 = $('#password2').val()
+        if (pass1 === pass2) {
+
+        } else {
+            event.preventDefault()
+        }
+    });
+    var myInput = document.getElementById("psw");
     var letter = document.getElementById("letter");
     var capital = document.getElementById("capital");
     var number = document.getElementById("number");

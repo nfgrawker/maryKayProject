@@ -1,4 +1,5 @@
 {% extends 'login/base.html' %}
+{% load crispy_forms_tags %}
 {% block content %}
     <div class="container mt-5">
         <div class="row">
@@ -7,27 +8,19 @@
             <div class="col-sm-4">
                 <img class="logo" src="https://www.logolynx.com/images/logolynx/98/98508507ef0d11aa8b9c58c106149309.jpeg" alt="MK Logo">
             </div>
-            <div class="col-sm-4"></div>
-            <div class="w-100 mt-5"></div>
-            <div class="col-sm-3"></div>
             <div class="container">
-                <form action="/login" class="row text-center" method="post">
-                    <div class="col-sm-3"></div>
-                    <div class="col-sm-6 form-group">
-                        <label for="">Consultant Number:</label>
-                        <input autofocus class="form-control" type="text" name="consultantNumber" placeholder="Your Consultant Number">
-                    </div>
-                    <div class="col-sm-3"></div>
-                    <div class="w-100 mt-1"></div>
-                    <div class="col-sm-3"></div>
-                    <div class="col-sm-6 form-group">
-                        <label for="">Password: </label>
-                        <input class="form-control" type="password" name="password" placeholder="Your password">
+                <form  class="text-center" method="POST">
+                    {% csrf_token %}
+                    <fieldset class="form-group">
+                        <legend class="border-bottom mb-4">Log In Here Please!</legend>
+                        {{ form|crispy }}
+                    </fieldset>
+                <div class="form-group">
+                    <button class="btn btn-outline-info" type="submit">Login</button>
+                </div>
                         <p><a href="/forgotpassword">I Forgot My Password</a></p>
-                        <input type="submit" value="Login" class="btn secondary white mt-2">
-                        <p class="mt-2"><a href="/registeraccount">Register For An Account</a></p>
 
-                    </div>
+                        <p class="mt-2"><a href="/registeraccount">Register For An Account</a></p>
                     <div class="col-sm-3"></div>
 
                 </form>

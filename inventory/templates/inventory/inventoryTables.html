@@ -1,0 +1,45 @@
+{% extends 'inventory/inventoryBase.html' %}
+{% block content %}
+    <div class="row">
+        <div class="container">
+            <div class="col-sm-12">
+            <h1>Product Inventory</h1>
+                <table class="table-striped display">
+                    <thead>
+                    <tr>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Optional Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% with index=0 %}
+                        {% for product in products %}
+                            <tr>
+                                <td>{{ product.quantity }}</td>
+                                <td>{{ product.product_name }}</td>
+                                <td>{{ product.price }}</td>
+                                <td>{{ product.product_description }}</td>
+                                <th>
+                                    <button class="button" id="changeProduct">Change Inventory</button>
+                                </th>
+                            </tr>
+                        {% endfor %}
+                    {% endwith %}
+                    <tr>
+                        {% csrf_token %}
+                        <td><input type="text" id="quantity" placeholder="product quantity"></td>
+                        <td><input type="text" id="name" placeholder="product name"></td>
+                        <td><input type="text" id="price" placeholder="product price"></td>
+                        <td><input type="text" id="description" placeholder="product description"></td>
+                        <th>
+                            <button class="button" id="postProduct">Add to Inventory</button>
+                        </th>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
