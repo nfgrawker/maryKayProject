@@ -19,7 +19,8 @@ def forgotPassword(request):
 
 def termsAndConditions(request):
     return HttpResponse("COMING SOON!")
-
+def mainRedirect(request):
+    return redirect("/login")
 
 def registerAccount(request):
     if request.method == "POST":
