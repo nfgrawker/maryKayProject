@@ -42,6 +42,7 @@ def addProduct(request):
         log = InventoryLog(type="add",consultant=request.user,quantity=quantity, price=price, product=model)
         model.save()
         log.save()
+        response = {'status': 1, 'message': ("Ok")}  # for ok
         return HttpResponse(json.dumps(response), content_type='application/json')
 
     else:

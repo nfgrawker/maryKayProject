@@ -3,17 +3,27 @@
     <div class="row">
         <div class="container">
             <div class="col-sm-12">
-            <h1>Product Inventory</h1>
+                <h1>Product Inventory</h1>
                 <table class="table-striped display">
                     <thead>
                     <tr>
                         <th scope="col">Quantity</th>
                         <th scope="col">Product Name</th>
-                        <th scope="col">Price</th>
+                        <th scope="col">Retail Price per Item</th>
                         <th scope="col">Optional Description</th>
                     </tr>
                     </thead>
                     <tbody>
+                    <tr>
+                        {% csrf_token %}
+                        <td><input type="text" id="quantity" placeholder="product quantity"></td>
+                        <td><input type="text" id="name" placeholder="product name"></td>
+                        <td><input type="text" id="price" placeholder="product price"></td>
+                        <td><input type="text" id="description" placeholder="product description"></td>
+                        <th>
+                            <button class="button" id="postProduct">Add to Inventory</button>
+                        </th>
+                    </tr>
                     {% with index=0 %}
                         {% for product in products %}
                             <tr>
@@ -27,16 +37,6 @@
                             </tr>
                         {% endfor %}
                     {% endwith %}
-                    <tr>
-                        {% csrf_token %}
-                        <td><input type="text" id="quantity" placeholder="product quantity"></td>
-                        <td><input type="text" id="name" placeholder="product name"></td>
-                        <td><input type="text" id="price" placeholder="product price"></td>
-                        <td><input type="text" id="description" placeholder="product description"></td>
-                        <th>
-                            <button class="button" id="postProduct">Add to Inventory</button>
-                        </th>
-                    </tr>
                     </tbody>
                 </table>
             </div>

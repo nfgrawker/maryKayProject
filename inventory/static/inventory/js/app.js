@@ -14,9 +14,9 @@ window.onload = function(){
         const sleep = (milliseconds) => {
             return new Promise(resolve => setTimeout(resolve, milliseconds))
         }
-        let successMessage = function(){
-            sleep(1000)
-          location.reload()
+        let successMessage = function(response){
+            console.log(response)
+            location.reload()
         };
         let csrftoken = $("[name=csrfmiddlewaretoken]").val();
         $.ajax({
@@ -27,11 +27,11 @@ window.onload = function(){
             headers:{
             "X-CSRFToken": csrftoken
             },
-            success: successMessage(),
             dataType: "json"
+        }).then(response=>{
+            console.log(response)
         });
         console.log(objectToSend)
-
-
+        location.reload()
     })
 };
