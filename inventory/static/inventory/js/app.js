@@ -4,20 +4,15 @@ window.onload = function () {
         let allListElements = $("input");
         let inputs = $(parent).find(allListElements);
         let objectToSend = {};
+         let arrayForInput = [""];
         inputs.each(function () {
             if ($(this).attr("id") == undefined) {
                 console.log("skipping token")
             } else {
                 objectToSend[$(this).attr("id")] = $(this).val()
+                arrayForInput.push($(this).val())
             }
         });
-        const sleep = (milliseconds) => {
-            return new Promise(resolve => setTimeout(resolve, milliseconds))
-        }
-        let successMessage = function (response) {
-            console.log(response)
-            location.reload()
-        };
         let csrftoken = $("[name=csrfmiddlewaretoken]").val();
         $.ajax({
             type: "POST",
@@ -30,8 +25,16 @@ window.onload = function () {
             dataType: "json"
         }).then(response => {
             console.log(response)
+            if(response['status'] == 1){
+                let newRow = $("<tr>")
+                arrayForInput.forEach(function(val,idx){
+                    let tableData = $("<td>")
+                    tableData.append(val)
+                    newRow.append(tableData)
+                });
+                $(".mainInventoryTable").append(newRow)
+            }
         });
         console.log(objectToSend)
-        location.reload()
     })
 };

@@ -46,9 +46,11 @@ def addProduct(request):
             log = InventoryLog(type="add", consultant=request.user, quantity=quantity, price=price, product=model)
             model.save()
             log.save()
+            messages.success(request, "Your inventory has been saved!")
             response = {'status': 1, 'message': ("Ok")}  # for ok
             return HttpResponse(json.dumps(response), content_type='application/json')
         except Exception as e:
+            # TODO: add lOGGER
             pass
 
     else:
