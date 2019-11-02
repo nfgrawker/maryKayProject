@@ -1,14 +1,15 @@
-img.logo{
+img.logo {
     width: 350px;
     height: 234px;
 }
-.buffer{
-    height:20%;
+
+.buffer {
+    height: 20%;
     width: 102%;
     border: 1px solid black;
 }
 
-.fullContainer{
+.fullContainer {
     height: 100%;
     display: flex;
     align-items: center;

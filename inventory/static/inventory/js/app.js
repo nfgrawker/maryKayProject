@@ -1,20 +1,20 @@
-window.onload = function(){
-    $("#postProduct").click(function(){
+window.onload = function () {
+    $("#postProduct").click(function () {
         parent = $("#postProduct").parent().parent();
-        let allListElements = $( "input" );
+        let allListElements = $("input");
         let inputs = $(parent).find(allListElements);
         let objectToSend = {};
-        inputs.each(function(){
-            if($(this).attr("id")==undefined){
+        inputs.each(function () {
+            if ($(this).attr("id") == undefined) {
                 console.log("skipping token")
-            }else {
+            } else {
                 objectToSend[$(this).attr("id")] = $(this).val()
             }
         });
         const sleep = (milliseconds) => {
             return new Promise(resolve => setTimeout(resolve, milliseconds))
         }
-        let successMessage = function(response){
+        let successMessage = function (response) {
             console.log(response)
             location.reload()
         };
@@ -24,11 +24,11 @@ window.onload = function(){
             url: "addInventory/",
             data: JSON.stringify(objectToSend),
             contentType: "application/json",
-            headers:{
-            "X-CSRFToken": csrftoken
+            headers: {
+                "X-CSRFToken": csrftoken
             },
             dataType: "json"
-        }).then(response=>{
+        }).then(response => {
             console.log(response)
         });
         console.log(objectToSend)
