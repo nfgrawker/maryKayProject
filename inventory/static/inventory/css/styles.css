@@ -1,0 +1,4 @@
+nav.navbar{
+    background-color: #f3dde7;
+}
+tr:nth-child(odd) {background: #f3dde7 }

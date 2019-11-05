@@ -36,5 +36,23 @@ window.onload = function () {
             }
         });
         console.log(objectToSend)
+    });
+    $("#changeProduct").click(function(){
+        parent = $("#postProduct").parent().parent();
+        let allListElements = $("input");
+        let inputs = $(parent).find(allListElements);
+        inputs.each(function () {
+            if ($(this).attr("id") == undefined) {
+                console.log("skipping token")
+            } else {
+                objectToSend[$(this).attr("id")] = $(this).val()
+            }
+
+        });
+            keyList = Object.keys(objectToSend)
+            paramsList = []
+        keyList.forEach(function(val,idx){
+
+        })
     })
 };
