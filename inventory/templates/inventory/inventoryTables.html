@@ -4,7 +4,19 @@
         <div class="row">
             <div class="col-sm-12">
                 <h1>Product Inventory</h1>
-                <table class=" display">
+
+                {% csrf_token %}
+                <td><input type="text" id="quantity" placeholder="product quantity"></td>
+                <td><input type="text" id="name" placeholder="product name"></td>
+                <td><input type="text" id="price" placeholder="product price"></td>
+                <td><input type="text" id="description" placeholder="product description"></td>
+                <th>
+                    <button class="button" id="postProduct">Add to Inventory</button>
+                </th>
+                        <div class="w-100 mb-4"></div>
+
+                </tr>
+                <table class=" display w-100">
                     <thead>
                     <tr>
                         <th scope="col">Quantity</th>
@@ -15,28 +27,48 @@
                     </thead>
                     <tbody class="maininventoryTable">
                     <tr>
-                        {% csrf_token %}
-                        <td><input type="text" id="quantity" placeholder="product quantity"></td>
-                        <td><input type="text" id="name" placeholder="product name"></td>
-                        <td><input type="text" id="price" placeholder="product price"></td>
-                        <td><input type="text" id="description" placeholder="product description"></td>
-                        <th>
-                            <button class="button" id="postProduct">Add to Inventory</button>
-                        </th>
-                    </tr>
-                    {% with index=0 %}
-                        {% for product in products %}
-                            <tr>
-                                <td>{{ product.quantity }}</td>
-                                <td>{{ product.product_name }}</td>
-                                <td>{{ product.price }}</td>
-                                <td>{{ product.product_description }}</td>
-                                <th>
-                                    <button class="button" id="changeProduct">Change Inventory</button>
-                                </th>
-                            </tr>
-                        {% endfor %}
-                    {% endwith %}
+                        {% with index=0 %}
+                            {% for product in products %}
+                                <tr>
+                                    <td id="quantityadd">{{ product.quantity }}</td>
+                                    <td id="product_nameadd">{{ product.product_name }}</td>
+                                    <td id="priceadd">{{ product.price }}</td>
+                                    <td id="product_descriptionadd">{{ product.product_description }}</td>
+                                    <th>
+                                        <button class="button" id="changeInventory" data-toggle="modal"
+                                                data-target="#exampleModalCenter">Change Inventory
+                                        </button>
+                                    </th>
+                                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalCenterTitle">Inventory
+                                                        Change</h5>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="row">
+                                                        <div class="col-lg-6"><input type="text" name="quantity"
+                                                                                     id="quantitychange"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                            data-dismiss="modal">
+                                                        Close
+                                                    </button>
+                                                    <button type="button" class="btn" style="background-color:#f3dde7">
+                                                        Post Changes
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </tr>
+
+                            {% endfor %}
+                        {% endwith %}
                     </tbody>
                 </table>
             </div>
