@@ -31,19 +31,7 @@ window.onload = function () {
                 console.log("Array for input");
                 console.log(arrayForInput);
                 arrayForInput.forEach(function(val,idx){
-                    let tableData = $("<td>{}" +
-                        "" +
-                        "" +
-                        "" +
-                        "" +
-                        "" +
-                        "" +
-                        "" +
-                        "" +
-                        "" +
-                        "" +
-                        "" +
-                        "");
+                    let tableData = $("<td>");
                     console.log(val);
                     tableData.text(val);
                     newRow.append(tableData);
