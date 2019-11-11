@@ -1,5 +1,6 @@
 import json
 
+from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
@@ -44,8 +45,9 @@ def addProduct(request):
             model = Products(product_name=product_name, quantity=quantity, price=price,
                              product_description=product_description, consultant=request.user)
             log = InventoryLog(type="add", consultant=request.user, quantity=quantity, price=price, product=model)
-            model.save()
-            log.save()
+            if not settings.DEBUG:
+                model.save()
+                log.save()
             messages.success(request, "Your inventory has been saved!")
             response = {'status': 1, 'message': ("Ok")}  # for ok
             return HttpResponse(json.dumps(response), content_type='application/json')

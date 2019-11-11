@@ -4,7 +4,7 @@ window.onload = function () {
         let allListElements = $("input");
         let inputs = $(parent).find(allListElements);
         let objectToSend = {};
-         let arrayForInput = [""];
+        let arrayForInput = [];
         inputs.each(function () {
             if ($(this).attr("id") == undefined) {
                 console.log("skipping token")
@@ -26,16 +26,30 @@ window.onload = function () {
         }).then(response => {
             console.log(response);
             if(response['status'] == 1){
-                console.log("adding")
+                console.log("adding");
                 let newRow = $("<tr>");
+                console.log("Array for input");
+                console.log(arrayForInput);
                 arrayForInput.forEach(function(val,idx){
-                    let tableData = $("<td>");
-                    tableData.append(val);
-                    newRow.append(tableData)
-                    console.log("appending")
-                    console.log(tableData)
+                    let tableData = $("<td>{}" +
+                        "" +
+                        "" +
+                        "" +
+                        "" +
+                        "" +
+                        "" +
+                        "" +
+                        "" +
+                        "" +
+                        "" +
+                        "" +
+                        "");
+                    console.log(val);
+                    tableData.text(val);
+                    newRow.append(tableData);
+                    console.log("appending");
                 });
-                $(".mainInventoryTable").prepend(newRow)
+                $(".mainInventoryTable").append(newRow)
             }
         });
         console.log(objectToSend)
