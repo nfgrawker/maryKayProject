@@ -42,31 +42,4 @@ window.onload = function () {
         });
         console.log(objectToSend)
     });
-    $("#changeProduct").click(function(){
-        parent = $("#postProduct").parent().parent();
-        url = "/changeProduct";
-        let allListElements = $("input");
-        let inputs = $(parent).find(allListElements);
-        inputs.each(function () {
-            if ($(this).attr("id") == undefined) {
-                console.log("skipping token")
-            } else {
-                objectToSend[$(this).attr("td")] = $(this).val()
-            }
-
-        });
-            keyList = Object.keys(objectToSend);
-            paramsList = [];
-        keyList.forEach(function(val,idx){
-            if (idx == 0){
-                url += "?"+val+"="+objectToSend[val]
-            }
-            else{
-                url += "&"+val+"="+objectToSend[val]
-            }
-        });
-        $.get(url,function(response){
-            console.log(response)
-        })
-    })
 };

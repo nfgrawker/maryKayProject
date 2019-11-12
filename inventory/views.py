@@ -25,13 +25,6 @@ def inventoryHome(request):
         print(request.user)
         return render(request, "inventory/inventoryTables.html", {"products": products})
 
-
-@login_required
-def createProductsTest(request):
-    print(request.POST)
-    return HttpResponse("Success")
-
-
 @login_required
 def addProduct(request):
     if request.method == "POST":
@@ -60,3 +53,16 @@ def addProduct(request):
 
     else:
         raise Http404("Did not use post")
+
+@login_required
+def orderForm(request):
+        products = Products.objects.filter(consultant=request.user)
+        for product in products:
+            product.price = product.price / 100
+            product.price = format(product.price, '.2f')
+        customers = Customers.objects.filter(consultant=request.user)
+        context = {
+            'products': products,
+            'customers':customers
+        }
+        return render(request, "inventory/inventoryChange.html", context)

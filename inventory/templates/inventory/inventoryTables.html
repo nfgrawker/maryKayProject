@@ -13,7 +13,7 @@
                 <th>
                     <button class="button" id="postProduct">Add to Inventory</button>
                 </th>
-                        <div class="w-100 mb-4"></div>
+                <div class="w-100 mb-4"></div>
 
                 </tr>
                 <table class=" display w-100">
@@ -27,51 +27,23 @@
                     </thead>
                     <tbody class="mainInventoryTable">
                     <tr>
-                        {% with index=0 %}
-                            {% for product in products %}
-                                <tr>
-                                    <td id="quantityadd">{{ product.quantity }}</td>
-                                    <td id="product_nameadd">{{ product.product_name }}</td>
-                                    <td id="priceadd">{{ product.price }}</td>
-                                    <td id="product_descriptionadd">{{ product.product_description }}</td>
-                                    <th>
-                                        <button class="button" id="changeInventory" data-toggle="modal"
-                                                data-target="#exampleModalCenter">Change Inventory
-                                        </button>
-                                    </th>
-                                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-                                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalCenterTitle">Inventory
-                                                        Change</h5>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="row">
-                                                        <div class="col-lg-6"><input type="text" name="quantity"
-                                                                                     id="quantitychange"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
-                                                            data-dismiss="modal">
-                                                        Close
-                                                    </button>
-                                                    <button type="button" class="btn" style="background-color:#f3dde7">
-                                                        Post Changes
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </tr>
-
-                            {% endfor %}
-                        {% endwith %}
+                        {% for product in products %}
+                            <tr>
+                                <td id="quantityadd">{{ product.quantity }}</td>
+                                <td id="product_nameadd">{{ product.product_name }}</td>
+                                <td id="priceadd">{{ product.price }}</td>
+                                <td id="product_descriptionadd">{{ product.product_description }}</td>
+                                <th>
+                                    <button class="button" id="changeInventory{{ index }}" data-toggle="modal"
+                                            data-target="#exampleModalCenter">Change Inventory
+                                    </button>
+                                </th>
+                            </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
+
 {% endblock content %}
