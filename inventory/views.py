@@ -7,7 +7,7 @@ from django.http import Http404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 
-from .models import Products, InventoryLog
+from .models import Products, InventoryLog, Customers
 
 
 # Create your views here.
@@ -23,7 +23,7 @@ def inventoryHome(request):
             'products': products
         }
         print(request.user)
-        return render(request, "inventory/inventoryTables.html", {"products": products})
+        return render(request, "inventory/inventoryTables.html", context)
 
 @login_required
 def addProduct(request):
@@ -42,6 +42,7 @@ def addProduct(request):
                 model.save()
                 log.save()
             else:
+                pass
                 model.save()
                 log.save()
             messages.success(request, "Your inventory has been saved!")
@@ -56,13 +57,20 @@ def addProduct(request):
 
 @login_required
 def orderForm(request):
-        products = Products.objects.filter(consultant=request.user)
-        for product in products:
-            product.price = product.price / 100
-            product.price = format(product.price, '.2f')
-        customers = Customers.objects.filter(consultant=request.user)
-        context = {
-            'products': products,
-            'customers':customers
+    products = Products.objects.filter(consultant=request.user)
+    for product in products:
+        product.price = product.price / 100
+        product.price = format(product.price, '.2f')
+    customers = Customers.objects.filter(consultant=request.user)
+    context = {
+        'products': products,
+        'customers':customers
         }
-        return render(request, "inventory/inventoryChange.html", context)
+    return render(request, "inventory/inventoryChange.html", context)
+
+def customerPage(request):
+    customers = Customers.objects.filter(consultant=request.user)
+    context = {
+    "customers":customers
+    }
+    return render(request, "inventory/customerChange.html", context)

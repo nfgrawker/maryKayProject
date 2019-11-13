@@ -16,10 +16,13 @@ class Products(models.Model):
 
 class Customers(models.Model):
     _id = models.ObjectIdField()
-    name = models.CharField(max_length=10)
+    firstName = models.CharField(max_length=50)
+    lastName = models.CharField(max_length=50, default="None")
     number = models.CharField(max_length=15, default="Unknown")
     email = models.EmailField(max_length=200)
-    address = models.CharField(max_length=300)
+    street = models.CharField(max_length=200)
+    city = models.CharField(max_length=100)
+    zip = models.CharField(max_length=20)
     consultant = models.ForeignKey(User, on_delete=models.CASCADE)
 
 

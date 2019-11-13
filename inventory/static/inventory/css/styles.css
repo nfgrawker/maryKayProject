@@ -7,3 +7,6 @@ tr:nth-child(odd) {background: #f3dde7 }
 /*    display: none;*/
 /*}*/
 
+input{
+    width: 100%;
+}
