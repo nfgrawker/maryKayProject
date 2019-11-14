@@ -1,7 +1,7 @@
 {% extends 'inventory/inventoryBase.html' %}
 {% block content %}
-    <div class="container text-center border mt-5">
-        <h1 class="text-center fa-underline">Customer Form</h1>
+    <div class="container border mt-5">
+        <h1 class="fa-underline">Customer Form</h1>
         <div class="row">
             {% csrf_token %}
             <div class="col-lg-6">
@@ -16,37 +16,39 @@
             </div>
             <div class="col-lg-3">
                 <h2>First Name</h2>
-                <input id="firstName" type="text">
+                <input name="firstName" type="text">
             </div>
             <div class="col-lg-3">
                 <h2>Last Name</h2>
-                <input id="lastName" type="text">
+                <input name="lastName" type="text">
             </div>
         </div>
             <div class="row">
                 <div class="col-lg-6">
                     <h2>Phone Number</h2>
-                    <input id="phoneNumber" type="text">
+                    <input name="phoneNumber" type="text">
                 </div>
                 <div class="col-lg-6">
                     <h2>Email</h2>
-                    <input id="email" type="text">
+                    <input name="email" type="text">
                 </div>
             </div>
+            <div class="row">
             <div class="col-lg-12">
                 <h2>Street Address</h2>
-                <input id="street" type="text">
+                <input class="long" name="street" type="text">
             </div>
+                </div>
             <div class="row">
                 <div class="col-lg-6">
                     <h2>City</h2>
-                    <input id="city" type="text">
+                    <input name="city" type="text">
                 </div>
                 <div class="col-lg-6">
                     <h2>Zip</h2>
-                    <input id="zip" type="text">
+                    <input name="zip" type="text">
                 </div>
             </div>
-    <button class="button btn-block btn-info" id="changeButton">Change</button>
+    <button class="button text-center pink" id="changeButton">Change</button>
     </div>
 {% endblock content %}
