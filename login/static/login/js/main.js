@@ -2,14 +2,14 @@
     // USE STRICT
     "use strict";
 
-    $(".form-radio .radio-item").click(function(){
+    $(".form-radio .radio-item").click(function () {
         //Spot switcher:
         $(this).parent().find(".radio-item").removeClass("active");
         $(this).addClass("active");
     });
 })(jQuery);
 
-window.onload = function() {
+window.onload = function () {
     var myInput = document.getElementById("password1");
     var letter = document.getElementById("letter");
     var capital = document.getElementById("capital");

@@ -1,0 +1,15 @@
+nav.navbar{
+    background-color: lightpink;
+}
+tr:nth-child(odd) {background: lightpink }
+
+/*#orderFormInvisible{*/
+/*    display: none;*/
+/*}*/
+
+input.long{
+    width: 100%;
+}
+.pink{
+    background-color: lightpink;
+}

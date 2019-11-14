@@ -16,15 +16,21 @@ def homeLogin(request):
 
 def forgotPassword(request):
     return HttpResponse("ForgotPasswordPage")
+
+
 def logout_view(request):
     logout(request)
     messages.success(request, 'You have been logged out')
     return redirect("/login")
 
+
 def termsAndConditions(request):
     return HttpResponse("COMING SOON!")
+
+
 def mainRedirect(request):
     return redirect("/login")
+
 
 def registerAccount(request):
     if request.method == "POST":

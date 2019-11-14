@@ -5,7 +5,6 @@ import djongo.models.fields
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('login', '0002_remove_user_consultant_number'),
     ]
@@ -18,7 +17,8 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='user',
             name='_id',
-            field=djongo.models.fields.ObjectIdField(auto_created=True, default=None, primary_key=True, serialize=False),
+            field=djongo.models.fields.ObjectIdField(auto_created=True, default=None, primary_key=True,
+                                                     serialize=False),
             preserve_default=False,
         ),
     ]

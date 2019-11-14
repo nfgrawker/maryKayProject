@@ -6,21 +6,23 @@
             <div class="col-sm-4">
             </div>
             <div class="col-sm-4">
-                <img class="logo" src="https://www.logolynx.com/images/logolynx/98/98508507ef0d11aa8b9c58c106149309.jpeg" alt="MK Logo">
+                <img class="logo"
+                     src="https://www.logolynx.com/images/logolynx/98/98508507ef0d11aa8b9c58c106149309.jpeg"
+                     alt="MK Logo">
             </div>
             <div class="container">
-                <form  class="text-center" method="POST">
+                <form class="text-center" method="POST">
                     {% csrf_token %}
                     <fieldset class="form-group">
                         <legend class="border-bottom mb-4">Log In Here Please!</legend>
                         {{ form|crispy }}
                     </fieldset>
-                <div class="form-group">
-                    <button class="btn btn-outline-info" type="submit">Login</button>
-                </div>
-                        <p><a href="/forgotpassword">I Forgot My Password</a></p>
+                    <div class="form-group">
+                        <button class="btn btn-outline-info" type="submit">Login</button>
+                    </div>
+                    <p><a href="/forgotpassword">I Forgot My Password</a></p>
 
-                        <p class="mt-2"><a href="/registeraccount">Register For An Account</a></p>
+                    <p class="mt-2"><a href="/registeraccount">Register For An Account</a></p>
                     <div class="col-sm-3"></div>
 
                 </form>

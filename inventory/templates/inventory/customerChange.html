@@ -1,0 +1,54 @@
+{% extends 'inventory/inventoryBase.html' %}
+{% block content %}
+    <div class="container border mt-5">
+        <h1 class="fa-underline">Customer Form</h1>
+        <div class="row">
+            {% csrf_token %}
+            <div class="col-lg-6">
+                <h2>Customer Name</h2>
+                <select name="selectCustomer" id="selectCustomer">
+                    <option disabled selected value> -- select an option -- </option>
+                    <option value="new">New</option>
+                    {% for customer in customers %}
+                        <option value="{{ customer.firstName }} {{ customer.lastName }}">{{ customer.firstName }} {{ customer.lastName }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-lg-3">
+                <h2>First Name</h2>
+                <input name="firstName" type="text">
+            </div>
+            <div class="col-lg-3">
+                <h2>Last Name</h2>
+                <input name="lastName" type="text">
+            </div>
+        </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2>Phone Number</h2>
+                    <input name="phoneNumber" type="text">
+                </div>
+                <div class="col-lg-6">
+                    <h2>Email</h2>
+                    <input name="email" type="text">
+                </div>
+            </div>
+            <div class="row">
+            <div class="col-lg-12">
+                <h2>Street Address</h2>
+                <input class="long" name="street" type="text">
+            </div>
+                </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2>City</h2>
+                    <input name="city" type="text">
+                </div>
+                <div class="col-lg-6">
+                    <h2>Zip</h2>
+                    <input name="zip" type="text">
+                </div>
+            </div>
+    <button class="button text-center pink" id="changeButton">Change</button>
+    </div>
+{% endblock content %}
