@@ -8,6 +8,8 @@ from django.contrib.auth import logout
 # Create your views here.
 
 def homeLogin(request):
+    if request.user.is_authenticated():
+        return redirect("/inventoryHome")
     context = {
     }
     print(request)

@@ -73,6 +73,7 @@ def orderForm(request):
 
 def customerPage(request):
     customers = Customers.objects.filter(consultant=request.user)
+    id
     context = {
         "customers": customers
     }

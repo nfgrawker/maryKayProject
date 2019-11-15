@@ -10,7 +10,7 @@
                     <option disabled selected value> -- select an option -- </option>
                     <option value="new">New</option>
                     {% for customer in customers %}
-                        <option id="{{ customer._id }}" phone="{{ customer.number }}" street='{{customer.street}}' zip="{{ customer.zipCode }}" city="{{ customer.city }}" value="{{ customer.firstName }} {{ customer.lastName }}">{{ customer.firstName }} {{ customer.lastName }}</option>
+                        <option  phone="{{ customer.number }}" street='{{customer.street}}' zip="{{ customer.zipCode }}" city="{{ customer.city }}" value="{{ customer.firstName }} {{ customer.lastName }}">{{ customer.firstName }} {{ customer.lastName }}</option>
                     {% endfor %}
                 </select>
             </div>
