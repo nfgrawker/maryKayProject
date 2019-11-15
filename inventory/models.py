@@ -22,7 +22,7 @@ class Customers(models.Model):
     email = models.EmailField(max_length=200)
     street = models.CharField(max_length=200)
     city = models.CharField(max_length=100)
-    zip = models.CharField(max_length=20)
+    zipCode = models.CharField(max_length=20)
     consultant = models.ForeignKey(User, on_delete=models.CASCADE)
 
 

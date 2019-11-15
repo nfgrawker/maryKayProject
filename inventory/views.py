@@ -25,6 +25,7 @@ def inventoryHome(request):
         print(request.user)
         return render(request, "inventory/inventoryTables.html", context)
 
+
 @login_required
 def addProduct(request):
     if request.method == "POST":
@@ -55,6 +56,7 @@ def addProduct(request):
     else:
         raise Http404("Did not use post")
 
+
 @login_required
 def orderForm(request):
     products = Products.objects.filter(consultant=request.user)
@@ -64,13 +66,31 @@ def orderForm(request):
     customers = Customers.objects.filter(consultant=request.user)
     context = {
         'products': products,
-        'customers':customers
-        }
+        'customers': customers
+    }
     return render(request, "inventory/inventoryChange.html", context)
+
 
 def customerPage(request):
     customers = Customers.objects.filter(consultant=request.user)
     context = {
-    "customers":customers
+        "customers": customers
     }
     return render(request, "inventory/customerChange.html", context)
+
+
+def submitCustomer(request):
+    jsonIncoming = json.loads(request.body.decode('utf8'))
+    if jsonIncoming["type"] == "Submit":
+        firstName = jsonIncoming["firstName"]
+        lastName = jsonIncoming["lastName"]
+        zipCode = jsonIncoming["zip"]
+        phoneNumber = jsonIncoming["phoneNumber"]
+        email = jsonIncoming["email"]
+        street = jsonIncoming["street"]
+        city = jsonIncoming["city"]
+        customer = Customers(firstName=firstName, lastName=lastName, email=email, number=phoneNumber, street=street,
+                             city=city, zipCode=zipCode, consultant=request.user)
+        customer.save()
+        response = {'status': '1', 'message': ("OK")}
+    return HttpResponse(json.dumps(response), content_type='application/json')
