@@ -10,23 +10,23 @@
                     <option disabled selected value> -- select an option -- </option>
                     <option value="new">New</option>
                     {% for customer in customers %}
-                        <option  phone="{{ customer.number }}" street='{{customer.street}}' zip="{{ customer.zipCode }}" city="{{ customer.city }}" value="{{ customer.firstName }} {{ customer.lastName }}">{{ customer.firstName }} {{ customer.lastName }}</option>
+                        <option firstName="{{ customer.firstName }}" lastName="{{ customer.lastName }}" phoneNumber="{{ customer.number }}" street='{{customer.street}}' zip="{{ customer.zipCode }}" city="{{ customer.city }}" email="{{ customer.email }}" value="{{ customer.firstName }} {{ customer.lastName }}">{{ customer.firstName }} {{ customer.lastName }}</option>
                     {% endfor %}
                 </select>
             </div>
             <div class="col-lg-3">
                 <h2>First Name</h2>
-                <input name="firstName" type="text">
+                <input name="firstname" type="text">
             </div>
             <div class="col-lg-3">
                 <h2>Last Name</h2>
-                <input name="lastName" type="text">
+                <input name="lastname" type="text">
             </div>
         </div>
             <div class="row">
                 <div class="col-lg-6">
                     <h2>Phone Number</h2>
-                    <input name="phoneNumber" type="text">
+                    <input name="phonenumber" type="text">
                 </div>
                 <div class="col-lg-6">
                     <h2>Email</h2>

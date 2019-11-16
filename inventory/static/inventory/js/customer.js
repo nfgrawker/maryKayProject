@@ -4,15 +4,21 @@ window.onload = function () {
         if (selectDropDown.val() == "new") {
             $('.button').text("Submit");
             window.type = 'Submit'
+            $("input").val("")
         } else {
             $('.button').text("Change");
             attributesInSelectedObject = {};
             window.type = "Change";
             let id = $(this).children(":selected");
             console.log(id);
-            id[0].attributes.forEach(element=>{
-               attributesInSelectedObject[element.nodeName] = element.nodeValue
+            $.each(id[0].attributes, function (index, attr) {
+                attributesInSelectedObject[attr.nodeName] = attr.nodeValue
             });
+            for (let [key, value] of Object.entries(attributesInSelectedObject)) {
+                obj = $('[name="'+key+'"]')
+                obj.val(value)
+                console.log(obj.attr('type'))
+            }
             console.log(attributesInSelectedObject)
 
         }
