@@ -18,7 +18,6 @@ def inventoryHome(request):
         for product in products:
             product.price = product.price / 100
             product.price = format(product.price, '.2f')
-
         context = {
             'products': products
         }
@@ -73,7 +72,8 @@ def orderForm(request):
 
 def customerPage(request):
     customers = Customers.objects.filter(consultant=request.user)
-    id
+    for customer in customers:
+        customer.id = customer._id
     context = {
         "customers": customers
     }
@@ -82,16 +82,17 @@ def customerPage(request):
 
 def submitCustomer(request):
     jsonIncoming = json.loads(request.body.decode('utf8'))
-    if jsonIncoming["type"] == "Submit":
-        firstName = jsonIncoming["firstName"]
-        lastName = jsonIncoming["lastName"]
-        zipCode = jsonIncoming["zip"]
-        phoneNumber = jsonIncoming["phoneNumber"]
-        email = jsonIncoming["email"]
-        street = jsonIncoming["street"]
-        city = jsonIncoming["city"]
-        customer = Customers(firstName=firstName, lastName=lastName, email=email, number=phoneNumber, street=street,
-                             city=city, zipCode=zipCode, consultant=request.user)
-        customer.save()
-        response = {'status': '1', 'message': ("OK")}
+    id = jsonIncoming["id"]
+    firstName = jsonIncoming["firstname"]
+    lastName = jsonIncoming["lastname"]
+    zipCode = jsonIncoming["zip"]
+    phoneNumber = jsonIncoming["phonenumber"]
+    email = jsonIncoming["email"]
+    street = jsonIncoming["street"]
+    city = jsonIncoming["city"]
+    typeOfRequest = jsonIncoming['type']
+    customer = Customers(_id=id,firstName=firstName, lastName=lastName, email=email, number=phoneNumber, street=street,
+                     city=city, zipCode=zipCode, consultant=request.user)
+    customer.save()
+    response = {'status': '1', 'message': ("OK")}
     return HttpResponse(json.dumps(response), content_type='application/json')

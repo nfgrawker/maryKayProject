@@ -10,7 +10,8 @@
                     <option disabled selected value> -- select an option -- </option>
                     <option value="new">New</option>
                     {% for customer in customers %}
-                        <option firstName="{{ customer.firstName }}" lastName="{{ customer.lastName }}" phoneNumber="{{ customer.number }}" street='{{customer.street}}' zip="{{ customer.zipCode }}" city="{{ customer.city }}" email="{{ customer.email }}" value="{{ customer.firstName }} {{ customer.lastName }}">{{ customer.firstName }} {{ customer.lastName }}</option>
+                        {% load inventory_tags %}
+                        <option objectId="{{ customer.id }}"  firstName="{{ customer.firstName }}" lastName="{{ customer.lastName }}" phoneNumber="{{ customer.number }}" street='{{customer.street}}' zip="{{ customer.zipCode }}" city="{{ customer.city }}" email="{{ customer.email }}" value="{{ customer.firstName }} {{ customer.lastName }}">{{ customer.firstName }} {{ customer.lastName }}</option>
                     {% endfor %}
                 </select>
             </div>

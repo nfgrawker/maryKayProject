@@ -3,7 +3,7 @@ window.onload = function () {
     selectDropDown.change(function () {
         if (selectDropDown.val() == "new") {
             $('.button').text("Submit");
-            window.type = 'Submit'
+            window.type = 'Submit';
             $("input").val("")
         } else {
             $('.button').text("Change");
@@ -34,6 +34,8 @@ window.onload = function () {
         let csrftoken = $("[name=csrfmiddlewaretoken]").val();
         console.log(jsonObjectToSend);
         jsonObjectToSend["type"] = window.type;
+        selectedDiv = $("option:selected")
+        jsonObjectToSend["id"] = $("#selectCustomer").children(":selected").attr("objectId")
         $.ajax({
             type: "POST",
             url: "/inventoryHome/submitCustomer/",
