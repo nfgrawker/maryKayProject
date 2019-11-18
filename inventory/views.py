@@ -17,11 +17,9 @@ def inventoryHome(request):
         products = Products.objects.filter(consultant=request.user)
         for product in products:
             product.price = product.price / 100
-            product.price = format(product.price, '.2f')
+            product.price = format(product.price, ".2f")
             product.id = product._id
-        context = {
-            'products': products
-        }
+        context = {"products": products}
         print(request.user)
         return render(request, "inventory/inventoryTables.html", context)
 
@@ -30,15 +28,26 @@ def inventoryHome(request):
 def addProduct(request):
     if request.method == "POST":
         try:
-            jsonIncoming = json.loads(request.body.decode('utf8'))
+            jsonIncoming = json.loads(request.body.decode("utf8"))
             print(jsonIncoming)
             product_name = jsonIncoming["name"]
             product_description = jsonIncoming["description"]
             price = int(jsonIncoming["price"].replace(".", ""))
             quantity = jsonIncoming["quantity"]
-            model = Products(product_name=product_name, quantity=quantity, price=price,
-                             product_description=product_description, consultant=request.user)
-            log = InventoryLog(type="add", consultant=request.user, quantity=quantity, price=price, product=model)
+            model = Products(
+                product_name=product_name,
+                quantity=quantity,
+                price=price,
+                product_description=product_description,
+                consultant=request.user,
+            )
+            log = InventoryLog(
+                type="add",
+                consultant=request.user,
+                quantity=quantity,
+                price=price,
+                product=model,
+            )
             if not settings.DEBUG:
                 model.save()
                 log.save()
@@ -47,8 +56,8 @@ def addProduct(request):
                 model.save()
                 log.save()
             messages.success(request, "Your inventory has been saved!")
-            response = {'status': 1, 'message': ("Ok")}  # for ok
-            return HttpResponse(json.dumps(response), content_type='application/json')
+            response = {"status": 1, "message": ("Ok")}  # for ok
+            return HttpResponse(json.dumps(response), content_type="application/json")
         except Exception as e:
             # TODO: add lOGGER
             pass
@@ -62,27 +71,24 @@ def orderForm(request):
     products = Products.objects.filter(consultant=request.user)
     for product in products:
         product.price = product.price / 100
-        product.price = format(product.price, '.2f')
+        product.price = format(product.price, ".2f")
     customers = Customers.objects.filter(consultant=request.user)
-    context = {
-        'products': products,
-        'customers': customers
-    }
+    context = {"products": products, "customers": customers}
     return render(request, "inventory/inventoryChange.html", context)
+
 
 @login_required()
 def customerPage(request):
     customers = Customers.objects.filter(consultant=request.user)
     for customer in customers:
         customer.id = customer._id
-    context = {
-        "customers": customers
-    }
+    context = {"customers": customers}
     return render(request, "inventory/customerChange.html", context)
+
 
 @login_required()
 def submitCustomer(request):
-    jsonIncoming = json.loads(request.body.decode('utf8'))
+    jsonIncoming = json.loads(request.body.decode("utf8"))
     id = jsonIncoming["id"]
     firstName = jsonIncoming["firstname"]
     lastName = jsonIncoming["lastname"]
@@ -91,9 +97,18 @@ def submitCustomer(request):
     email = jsonIncoming["email"]
     street = jsonIncoming["street"]
     city = jsonIncoming["city"]
-    typeOfRequest = jsonIncoming['type']
-    customer = Customers(_id=id,firstName=firstName, lastName=lastName, email=email, number=phoneNumber, street=street,
-                     city=city, zipCode=zipCode, consultant=request.user)
+    typeOfRequest = jsonIncoming["type"]
+    customer = Customers(
+        _id=id,
+        firstName=firstName,
+        lastName=lastName,
+        email=email,
+        number=phoneNumber,
+        street=street,
+        city=city,
+        zipCode=zipCode,
+        consultant=request.user,
+    )
     customer.save()
-    response = {'status': '1', 'message': ("OK")}
-    return HttpResponse(json.dumps(response), content_type='application/json')
+    response = {"status": "1", "message": ("OK")}
+    return HttpResponse(json.dumps(response), content_type="application/json")

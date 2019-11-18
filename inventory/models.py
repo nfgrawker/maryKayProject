@@ -33,4 +33,6 @@ class InventoryLog(models.Model):
     price = models.IntegerField()
     product = models.ForeignKey(Products, on_delete=models.CASCADE)
     consultant = models.ForeignKey(User, on_delete=models.CASCADE)
-    customer = models.ForeignKey(Customers, on_delete=models.CASCADE, default=None, null=True, blank=True)
+    customer = models.ForeignKey(
+        Customers, on_delete=models.CASCADE, default=None, null=True, blank=True
+    )

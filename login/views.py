@@ -7,11 +7,11 @@ from django.contrib.auth import logout
 
 # Create your views here.
 
+
 def homeLogin(request):
     if request.user.is_authenticated():
         return redirect("/inventoryHome")
-    context = {
-    }
+    context = {}
     print(request)
     return render(request, "login/homeLogin.html", context)
 
@@ -22,7 +22,7 @@ def forgotPassword(request):
 
 def logout_view(request):
     logout(request)
-    messages.success(request, 'You have been logged out')
+    messages.success(request, "You have been logged out")
     return redirect("/login")
 
 
@@ -41,9 +41,9 @@ def registerAccount(request):
             form.save()
             print("saved")
             print(form.cleaned_data)
-            firstName = form.cleaned_data.get('first_name')
-            lastName = form.cleaned_data.get('last_name')
-            messages.success(request, f'Account created for {firstName} {lastName}!')
+            firstName = form.cleaned_data.get("first_name")
+            lastName = form.cleaned_data.get("last_name")
+            messages.success(request, f"Account created for {firstName} {lastName}!")
             return redirect("/login")
         else:
             print(form.errors)
