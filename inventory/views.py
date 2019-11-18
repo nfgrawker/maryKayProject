@@ -18,6 +18,7 @@ def inventoryHome(request):
         for product in products:
             product.price = product.price / 100
             product.price = format(product.price, '.2f')
+            product.id = product._id
         context = {
             'products': products
         }
@@ -69,7 +70,7 @@ def orderForm(request):
     }
     return render(request, "inventory/inventoryChange.html", context)
 
-
+@login_required()
 def customerPage(request):
     customers = Customers.objects.filter(consultant=request.user)
     for customer in customers:
@@ -79,7 +80,7 @@ def customerPage(request):
     }
     return render(request, "inventory/customerChange.html", context)
 
-
+@login_required()
 def submitCustomer(request):
     jsonIncoming = json.loads(request.body.decode('utf8'))
     id = jsonIncoming["id"]

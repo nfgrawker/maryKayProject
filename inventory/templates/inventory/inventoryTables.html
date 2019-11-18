@@ -28,14 +28,14 @@
                     <tbody class="mainInventoryTable">
                     <tr>
                         {% for product in products %}
-                            <tr>
+                            <tr objectId="{{ product.id }}">
                                 <td id="quantityadd">{{ product.quantity }}</td>
                                 <td id="product_nameadd">{{ product.product_name }}</td>
                                 <td id="priceadd">{{ product.price }}</td>
                                 <td id="product_descriptionadd">{{ product.product_description }}</td>
                                 <th>
-                                    <button class="button" id="changeInventory{{ index }}" data-toggle="modal"
-                                            data-target="#exampleModalCenter">Change Inventory
+                                    <button class="button" id="changeInventory" data-toggle="modal"
+                                            data-target="#changeInventoryModal">Change Inventory
                                     </button>
                                 </th>
                             </tr>
@@ -45,5 +45,35 @@
             </div>
         </div>
     </div>
-
+    <div class="modal fade" id="changeInventoryModal" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="modalBody" objectId="">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-5">
+                                <input name="productName" placeholder="Product Name" type="text">
+                            </div>
+                            <div class="col-lg-5">
+                                <input name="productQuantity" type="text">
+                            </div>
+                            <div class="col-lg-2">
+                                <button id="addToOrder" >Add</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="saveChanges" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock content %}
