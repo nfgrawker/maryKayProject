@@ -13,6 +13,11 @@
                 <th>
                     <button class="button" id="postProduct">Add to Inventory</button>
                 </th>
+                <th>
+                    <button class="button" id="changeInventory" data-toggle="modal"
+                            data-target="#changeInventoryModal">Change Inventory
+                    </button>
+                </th>
                 <div class="w-100 mb-4"></div>
 
                 </tr>
@@ -28,16 +33,11 @@
                     <tbody class="mainInventoryTable">
                     <tr>
                         {% for product in products %}
-                            <tr>
+                            <tr objectId="{{ product.id }}">
                                 <td id="quantityadd">{{ product.quantity }}</td>
                                 <td id="product_nameadd">{{ product.product_name }}</td>
                                 <td id="priceadd">{{ product.price }}</td>
                                 <td id="product_descriptionadd">{{ product.product_description }}</td>
-                                <th>
-                                    <button class="button" id="changeInventory" data-toggle="modal"
-                                            data-target="#changeInventoryModal">Change Inventory
-                                    </button>
-                                </th>
                             </tr>
                         {% endfor %}
                     </tbody>
@@ -50,28 +50,49 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                    <h5 class="mr-3">Type of Change</h5>
+                    <select name="typeOfTrans" id="typeSelector">
+                        <option selected value="sellStock">Sell Stock</option>
+                        <option value="addStock">Add Stock</option>
+                        <option value="exchangeStock">Exchange Stock</option>
+                        <option value="expireStock">Expire Stock</option>
+                    </select>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body" id="modalBody" objectId="">
                     <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12">
+                        <div class="row m-2">
+                            <div class="col-lg-8">
                                 <select name="productName" id="productName">
-                                {% for product in products %}
-                                    <option objectID="{{ product.id }}" value="{{ product.product_name }}">{{ product.product_name }}</option>
-                                {% endfor %}
+                                    {% for product in products %}
+                                        <option value="{{ product.product_name }}">{{ product.product_name }}</option>
+                                    {% endfor %}
                                 </select>
                             </div>
+                            <div class="col-lg-4">
+
+                            </div>
                         </div>
-                        <div class="row">
+                        <div class="row m-2">
                             <div class="col-lg-5">
-                                <input name="productQuantity" type="text">
+                                <input name="priceSoldFor" placeholder="Price Sold For" type="text">
+                            </div>
+                            <div class="col-lg-5">
+                                <input name="productQuantity" placeholder="Quantity Sold" type="text">
                             </div>
                             <div class="col-lg-2">
-                                <button id="addToOrder" >Add</button>
+                                <button id="addToOrder">Add</button>
+                            </div>
+                        </div>
+                        <div class="row m-2">
+                            <div class="col-lg-6">
+                                <select name="customerForTransaction" id="customerSelect">
+                                    {% for customer in customers %}
+                                        <option value="{{ customer.id }}">{{ customer.firstName }} {{ customer.lastName }}</option>
+                                    {% endfor %}
+                                </select>
                             </div>
                         </div>
                     </div>

@@ -15,12 +15,14 @@ from .models import Products, InventoryLog, Customers
 def inventoryHome(request):
     if request.user.is_authenticated:
         products = Products.objects.filter(consultant=request.user)
+        customers = Customers.objects.filter(consultant=request.user)
+        for customer in customers:
+            customer.id = customer._id
         for product in products:
             product.price = product.price / 100
             product.price = format(product.price, ".2f")
             product.id = product._id
-        context = {"products": products}
-        print(request.user)
+        context = {"products": products, "customers":customers}
         return render(request, "inventory/inventoryTables.html", context)
 
 
