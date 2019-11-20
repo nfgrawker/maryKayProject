@@ -25,12 +25,12 @@ window.onload = function () {
             dataType: "json"
         }).then(response => {
             console.log(response);
-            if(response['status'] == 1){
+            if (response['status'] == 1) {
                 console.log("adding");
                 let newRow = $("<tr>");
                 console.log("Array for input");
                 console.log(arrayForInput);
-                arrayForInput.forEach(function(val,idx){
+                arrayForInput.forEach(function (val, idx) {
                     let tableData = $("<td>");
                     console.log(val);
                     tableData.text(val);
@@ -42,4 +42,21 @@ window.onload = function () {
         });
         console.log(objectToSend)
     });
+    $("#typeSelector").change(function () {
+        let price = $("input#priceSoldFor");
+        let quantity = $("input#productQuantity");
+        switch ($(this).val()) {
+            case "sellStock":
+                price.attr("placeholder", "Price Sold For");
+                quantity.attr("placeholder", "Quantity Sold");
+                break;
+            case "addStock":
+                price.attr("placeholder","Whole Sale Price");
+                quantity.attr("placeholder","Quantity Purchased");
+                // code block
+                break;
+            default:
+            // code block
+        }
+    })
 };

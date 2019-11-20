@@ -11,11 +11,11 @@
                 <td><input type="text" id="price" placeholder="product price"></td>
                 <td><input type="text" id="description" placeholder="product description"></td>
                 <th>
-                    <button class="button" id="postProduct">Add to Inventory</button>
+                    <button class="button" id="postProduct">Add New Product Inventory</button>
                 </th>
                 <th>
                     <button class="button" id="changeInventory" data-toggle="modal"
-                            data-target="#changeInventoryModal">Change Inventory
+                            data-target="#changeInventoryModal">Change Inventory Form
                     </button>
                 </th>
                 <div class="w-100 mb-4"></div>
@@ -61,7 +61,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body" id="modalBody" objectId="">
+                <div class="modal-body" id="modalBody">
                     <div class="container">
                         <div class="row m-2">
                             <div class="col-lg-8">
@@ -77,13 +77,13 @@
                         </div>
                         <div class="row m-2">
                             <div class="col-lg-5">
-                                <input name="priceSoldFor" placeholder="Price Sold For" type="text">
+                                <input id="priceSoldFor" name="priceSoldFor" placeholder="Price Sold For" type="text">
                             </div>
                             <div class="col-lg-5">
-                                <input name="productQuantity" placeholder="Quantity Sold" type="text">
+                                <input id="productQuantity" name="productQuantity" placeholder="Quantity Sold" type="text">
                             </div>
                             <div class="col-lg-2">
-                                <button id="addToOrder">Add</button>
+                                <button id="addToOrder" class="small button">Add to Order</button>
                             </div>
                         </div>
                         <div class="row m-2">
