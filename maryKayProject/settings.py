@@ -86,10 +86,10 @@ DATABASES = {
     "default": {
         "ENGINE": "djongo",
         "NAME": "maryKayApp",
-        "HOST": env("HOST"),
-        "PASSWORD": env("PASSWORD"),
-        "USER": env("USER"),
-        "AUTH_MECHANISM": env("AUTH_MECHANISM"),
+        "HOST": "mongodb+srv://dylanthomasairhart:ANkkn4746021EEOf@marykay-mxgib.mongodb.net/test",
+        "PASSWORD": "ANkkn4746021EEOf",
+        "USER": "dylanthomasairhart",
+        "AUTH_MECHANISM": 'SCRAM-SHA-1',
         "AUTH_SOURCE": "admin",
         "ENFORCE_SCHEMA": False,
     }

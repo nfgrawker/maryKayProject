@@ -59,4 +59,11 @@ window.onload = function () {
             // code block
         }
     })
+    $("#addToOrder").click(function(){
+        let priceSold = $("#priceSoldFor").val()
+        let productQuantity = $("#productQuantity").val()
+        let productName =  $("#productName").children("option:selected").val()
+        let productId =  $("#productName").children("option:selected").attr("id")
+
+    })
 };
