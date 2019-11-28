@@ -17,3 +17,6 @@ input.long{
 #addToOrder{
     background-color: lightpink;
 }
+.small{
+    size: 8px
+}

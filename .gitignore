@@ -96,7 +96,7 @@ celerybeat-schedule
 *.sage.py
 
 # Environments
-.env
+maryKayProject/.env
 .venv
 env/
 venv/

@@ -53,10 +53,6 @@ def addProduct(request):
             if not settings.DEBUG:
                 model.save()
                 log.save()
-            else:
-                pass
-                model.save()
-                log.save()
             messages.success(request, "Your inventory has been saved!")
             response = {"status": 1, "message": ("Ok")}  # for ok
             return HttpResponse(json.dumps(response), content_type="application/json")

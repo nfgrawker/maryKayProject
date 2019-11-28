@@ -92,7 +92,14 @@
                                     {% for customer in customers %}
                                         <option value="{{ customer.id }}">{{ customer.firstName }} {{ customer.lastName }}</option>
                                     {% endfor %}
+                                    <option  value="newCustomer"><a href="/customerForm">Add Customer</a></option>
+
                                 </select>
+                            </div>
+                        </div>
+                        <div class="row m-2">
+                            <div class="col-lg-12 border-bottom" id="orderList">
+
                             </div>
                         </div>
                     </div>
